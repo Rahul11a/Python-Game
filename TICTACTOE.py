@@ -1,4 +1,10 @@
+import os
+# A function to clear the output
+def clear():
+    os.system( 'cls' )
+
 # Setting up the board
+
 def display_board(board):
     #board =['#','X','O','X','O','X','O','X','O','X']
     print("     |     |     ")
@@ -76,7 +82,7 @@ def full_board_check(board):
 
 # Taking the input from the player
 def player_choice(board):
-    display_board(board)
+    #display_board(board)
     position = 0
     while position not in range(1, 10) or not space_check(board, position):
         position = int(input("Choose the position from the left slots: "))
@@ -98,6 +104,7 @@ ch =''
 play_game = ''
 while True:
     board = [" "] * 10
+    clear()
     display_board(board)
     P1_marker, P2_marker = player_input()
     turn = choice_first()
@@ -111,18 +118,19 @@ while True:
     while game_on:
         if turn == 'Player 1':
             # Display the board
+            clear()
             display_board(board)
             # choose a position
             pos = player_choice(board)
             # Place the mark
             place_marker(board, pos, P1_marker)
             if win_check(board, P1_marker):
-                display_board(board)
+                #display_board(board)
                 print("Player 1 Won")
                 game_on = False
             else:
                 if full_board_check(board):
-                    display_board(board)
+                    #display_board(board)
                     print("TIE GAME !")
                     game_on = False
                 else:
@@ -130,6 +138,7 @@ while True:
 
         else:
             # Display the board
+            clear()
             display_board(board)
             # choose a position
             pos = player_choice(board)
